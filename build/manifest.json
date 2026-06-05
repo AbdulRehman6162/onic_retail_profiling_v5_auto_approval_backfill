@@ -1,0 +1,9 @@
+{
+  "short_name": "Retail Profiling",
+  "name": "Retail Profiling App",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}

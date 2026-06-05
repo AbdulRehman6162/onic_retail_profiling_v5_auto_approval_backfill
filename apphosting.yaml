@@ -1,0 +1,37 @@
+# Specifies the version of the App Hosting schema.
+specVersion: v1alpha1
+
+# Defines the build process for the application.
+build:
+  # Specifies the command to install dependencies.
+  # This will be run by the Node.js buildpack.
+  run:
+    - npm install
+  # Specifies the command to build the production application.
+  # This creates the 'build' directory.
+    - npm run build
+  # Specifies the output directory of the build process.
+  # This tells App Hosting where to find the finished static files.
+  outputFiles:
+    - path: build
+
+# Defines how the application should be run after it's built.
+run:
+  # Specifies the command to start the application server.
+  # 'serve -s build' starts a static server for the 'build' directory.
+  command:
+    - serve -s build
+  # Specifies that the application is publicly accessible.
+  public: true
+
+# Configure runtime resources to fix memory issues
+runConfig:
+  # Increase memory from default 512 MiB to 1024 MiB (1 GiB)
+  memoryMiB: 1024
+  # Set CPU to 1 (default, but explicit)
+  cpu: 1
+  # Reduce concurrency to help with memory usage
+  concurrency: 30
+  # Set max instances to control costs
+  maxInstances: 4
+  minInstances: 0
