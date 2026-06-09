@@ -574,8 +574,8 @@ function ReviewSubmitStep({
                     const usageSnap = await transaction.get(usageRef);
                     const submittedCount = usageSnap.exists() ? Number(usageSnap.data().submittedCount || 0) : 0;
 
-                    if (submittedCount >= 2) {
-                        throw new Error(`Location change limit reached for IMEI ${locationPayload.imei}. A device can have maximum 2 location change requests per day.`);
+                    if (submittedCount >= 10) {
+                        throw new Error(`Location change limit reached for IMEI ${locationPayload.imei}. A device can have maximum 10 location change requests per day.`);
                     }
 
                     const requestWithCounter = {
