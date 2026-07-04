@@ -1050,7 +1050,7 @@ export default function OperationsTeamDashboard({ user, appServices, db, auth })
                 where('assignedTo', '==', 'Operations Team'),
                 where('assignedToOperationsAt', '>=', sevenDaysAgo),
                 orderBy('assignedToOperationsAt', 'desc'),
-                limit(50)
+                limit(500)
             );
 
             const snapshot = await getDocs(q);
